@@ -1,0 +1,33 @@
+﻿{
+  "name": "SlothPortal",
+  "description": "SlothVPN 品牌化前台主题",
+  "version": "1.0.0",
+  "images": "",
+  "configs": [
+    {
+      "label": "主色方案",
+      "placeholder": "选择前台主色",
+      "field_name": "theme_color",
+      "field_type": "select",
+      "select_options": {
+        "default": "默认（深蓝青色）",
+        "aurora": "极光（蓝紫渐变）",
+        "midnight": "午夜（深色）",
+        "light": "浅色（商务）"
+      },
+      "default_value": "default"
+    },
+    {
+      "label": "首页背景图 URL",
+      "placeholder": "可选：输入背景图 URL",
+      "field_name": "background_url",
+      "field_type": "input"
+    },
+    {
+      "label": "自定义 HTML",
+      "placeholder": "例如客服脚本、统计脚本",
+      "field_name": "custom_html",
+      "field_type": "textarea"
+    }
+  ]
+}
