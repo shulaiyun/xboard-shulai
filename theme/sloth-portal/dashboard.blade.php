@@ -1,5 +1,8 @@
 ﻿<!doctype html>
 <html lang="zh-CN">
+@php
+  $themeConfig = is_array($theme_config ?? null) ? $theme_config : [];
+@endphp
 
 <head>
   <meta charset="UTF-8" />
@@ -15,10 +18,10 @@
       title: '{{$title}}',
       assets_path: '/theme/{{$theme}}/assets',
       theme: {
-        color: '{{ $theme_config['theme_color'] ?? "default" }}',
+        color: '{{ $themeConfig['theme_color'] ?? "default" }}',
       },
       version: '{{$version}}',
-      background_url: '{{$theme_config['background_url']}}',
+      background_url: '{{ $themeConfig['background_url'] ?? "" }}',
       description: '{{$description}}',
       logo: '{{$logo}}'
     };
@@ -26,7 +29,7 @@
 
   <div id="app"></div>
   <script src="/theme/{{$theme}}/assets/main.js?v={{$version}}"></script>
-  {!! $theme_config['custom_html'] !!}
+  {!! $themeConfig['custom_html'] ?? '' !!}
 </body>
 
 </html>

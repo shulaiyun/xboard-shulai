@@ -52,13 +52,18 @@ Route::get('/', function (Request $request) {
             Log::info('Theme initialized in public directory', ['theme' => $theme]);
         }
 
+        $themeConfig = $themeService->getConfig($theme);
+        if (!is_array($themeConfig)) {
+            $themeConfig = [];
+        }
+
         $renderParams = [
             'title' => admin_setting('app_name', 'Xboard'),
             'theme' => $theme,
             'version' => app(UpdateService::class)->getCurrentVersion(),
             'description' => admin_setting('app_description', 'Xboard is best'),
             'logo' => admin_setting('logo'),
-            'theme_config' => $themeService->getConfig($theme)
+            'theme_config' => $themeConfig
         ];
         return view('theme::' . $theme . '.dashboard', $renderParams);
     } catch (Exception $e) {
